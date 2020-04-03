@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  web:
+    image: nginx:alpine
+    depends_on:
+      - phpfpm
+    ports:
+      - 80
+    volumes:
+      - ./nginx/phpfpm.conf:/etc/nginx/conf.d/phpfpm.conf
+      - ./mcquery.php:/var/www/html/index.php
+    environment:
+      # If you use dory, this will let you query http://mcquery.docker
+      VIRTUAL_HOST: mcquery.docker
+
+  phpfpm:
+    image: achton/docker-minecraft-query:latest
+    volumes:
+      - ./mcquery.php:/var/www/html/index.php
+    environment:
+      MCQ_IP: 'bedrock.server.ip.here'
+      # These are optional:
+      # MCQ_PORT: '19132'
+      # MCQ_TYPE
