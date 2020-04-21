@@ -12,6 +12,9 @@ ARG MCQ_IP
 ARG MCQ_PORT
 ARG MCQ_TYPE
 
+# Copy our php-fpm config.
+COPY php-fpm/zz-www.conf /usr/local/etc/php-fpm.d/
+
 # Copy source to image.
 COPY --from=builder /app/vendor /var/www/html/vendor
 COPY mcquery.php /var/www/html/index.php
