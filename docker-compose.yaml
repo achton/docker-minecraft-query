@@ -8,7 +8,7 @@ services:
     ports:
       - 80
     volumes:
-      - ./nginx/phpfpm.conf:/etc/nginx/conf.d/phpfpm.conf
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
       - ./mcquery.php:/var/www/html/index.php
     environment:
       # If you use dory, this will let you query http://mcquery.docker
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./mcquery.php:/var/www/html/index.php
     environment:
-      MCQ_IP: 'bedrock.server.ip.here'
+      MCQ_IP: 'minecraft.server.ip.here'
       # These are optional:
       # MCQ_PORT: '19132'
-      # MCQ_TYPE
+      # MCQ_TYPE: 'JAVA'

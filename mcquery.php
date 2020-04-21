@@ -19,8 +19,6 @@ if (getenv('MCQ_TYPE') == 'JAVA') {
     $method = 'Connect';
 }
 
-header('Content-Type: application/json');
-
 $Query = new MinecraftQuery();
 try {
     $Query->$method($ip, $port);
@@ -29,7 +27,6 @@ try {
 catch(MinecraftQueryException $e) {
     json_response(['error' => $e->getMessage()], 500);
 }
-
 
 function json_response(Array $data, int $code = 200) {
 
