@@ -12,6 +12,8 @@ ARG MCQ_IP
 ARG MCQ_PORT
 ARG MCQ_TYPE
 
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
 # Copy our php-fpm config.
 COPY php-fpm/zz-www.conf /usr/local/etc/php-fpm.d/
 
